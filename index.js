@@ -1,18 +1,19 @@
-const tableDiv = document.querySelector('.table');
+const table = document.querySelector('.table');
 const tbody = document.querySelector('.tbody');
-const searchInput = document.querySelector('#search-input');
-const sortByPercentageButton = document.querySelector('#percSort');
-const sortByMarketCapButton = document.querySelector('#marketSort');
+const input = document.querySelector('#search-input');
+const percentageButton = document.querySelector('#percSort');
+const market_cap = document.querySelector('#marketSort');
 
 let coinData = [];
+
 const API = async () => {
     try {
         const URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
         const response = await fetch(URL);
         if (!response.ok) throw new Error('Failed to fetch data');
         return await response.json();
-    } catch (error) {
-        console.error('Error fetching data:', error);
+    } catch (err) {
+        console.error('Error fetching data:', err);
     }
 };
 
@@ -40,7 +41,7 @@ const renderTable = (data) => {
 };
 
 const filterTable = () => {
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = input.value.toLowerCase();
     const filteredData = coinData.filter(
         (coin) =>
             coin.name.toLowerCase().includes(searchTerm) ||
@@ -64,7 +65,7 @@ const initializeTable = async () => {
     renderTable(coinData);
 };
 
-searchInput.addEventListener('input', filterTable);
-sortByPercentageButton.addEventListener('click', sortByPercentage);
-sortByMarketCapButton.addEventListener('click', sortByMarketCap);
+input.addEventListener('input', filterTable);
+percentageButton.addEventListener('click', sortByPercentage);
+market_cap.addEventListener('click', sortByMarketCap);
 initializeTable();
