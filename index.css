@@ -15,7 +15,6 @@ body {
     align-items: center;
     justify-content: space-between;
     margin: 30px;
-    /* padding: 10px; */
 }
 
 #search-input {
@@ -33,7 +32,6 @@ body {
 
 .btn {
     padding: 15px;
-    /* border: none; */
     border: 2px solid rgba(142, 142, 142, 1);
     width: 14%;
     background-color: rgba(26, 26, 28, 1);
@@ -62,7 +60,6 @@ td:first-child {
     width: auto;
     padding: none !important;
     margin: none !important;
-    /* background-color: aliceblue; */
 }
 
 .name {
